@@ -4,19 +4,16 @@ import seaborn as sns
 import os
 from glob import glob
 
-# Set style
 sns.set_style("whitegrid")
 plt.rcParams['figure.figsize'] = (12, 6)
 plt.rcParams['font.size'] = 10
 
-# Create output directory
 os.makedirs('../output/visualizations', exist_ok=True)
 
 print("="*70)
 print("CREATING VISUALIZATIONS")
 print("="*70)
 
-# Function to read parquet files
 def read_parquet_folder(folder_path):
     parquet_files = glob(f"{folder_path}/*.parquet")
     if not parquet_files:
@@ -252,14 +249,3 @@ if all([sales_month is not None, sales_category is not None,
     plt.savefig('../output/visualizations/05_dashboard_summary.png', dpi=300, bbox_inches='tight')
     print("✓ Saved: 05_dashboard_summary.png")
     plt.close()
-
-print("\n" + "="*70)
-print("VISUALIZATION COMPLETE!")
-print("="*70)
-print("\nAll visualizations saved to: ../output/visualizations/")
-print("\nGenerated files:")
-print("  1. 01_monthly_trends.png")
-print("  2. 02_top_categories.png")
-print("  3. 03_top_countries.png")
-print("  4. 04_top_customers.png")
-print("  5. 05_dashboard_summary.png")
